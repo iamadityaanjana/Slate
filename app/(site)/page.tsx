@@ -112,6 +112,7 @@ const Homepage=()=>{
                   {card.planType === PRICING_PLANS.proplan && (
                     <>
                       <div
+                        id="pricing"
                         className="hidden dark:block w-full blur-[120px] rounded-full h-32
                         absolute
                         bg-brand-primaryPurple/80
