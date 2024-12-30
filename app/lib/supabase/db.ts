@@ -12,18 +12,18 @@ if(!process.env.DATABASE_URL){
     console.log("No database url found. Add url in .env file of your project");
 }
 
-const client = postgres(process.env.DATABASE_URL as string , {max:1})
-const db = drizzle(client);
-const migrateDB = async ()=>{
-    try{
-        console.log("migrating database")
-        await migrate(db, {migrationsFolder:'migrations'})
-        console.log("migrating database successfuly")
-    }catch (error){
-        console.log(`"error while migrating database , error is ${error}"`)
-    }
+const client = postgres(process.env.DATABASE_URL as string, { max: 1 });
+const db = drizzle(client, { schema });
+// const migrateDB = async ()=>{
+//     try{
+//         console.log("migrating database")
+//         await migrate(db, {migrationsFolder:'migrations'})
+//         console.log("database migration succesfull")
+//     }catch (error){
+//         console.log(`"error while migrating database , error is ${error}"`)
+//     }
     
-}
-migrateDB();
+// }
+// migrateDB();
 
 export default db;
