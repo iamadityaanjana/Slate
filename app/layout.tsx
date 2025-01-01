@@ -2,8 +2,11 @@
 import type { Metadata } from "next";
 import { DM_Sans} from "next/font/google";
 import "./globals.css";
-import db from "./lib/supabase/db";
+// import db from "./lib/supabase/db";
 import { ThemeProvider } from "../lib/providers/next-theme";
+import AppStateProvider from "@/lib/providers/state-provider";
+import { twMerge } from "tailwind-merge";
+import { SupabaseUserProvider } from "@/lib/providers/supabase-user-provider";
 
 
 const inter = DM_Sans({ subsets: ['latin'] });
@@ -24,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={inter.className}
+        className={twMerge('bg-background', inter.className)}
       >
         <ThemeProvider 
         attribute="class"
@@ -32,7 +35,11 @@ export default function RootLayout({
         enableSystem
         forcedTheme="dark"
         >
+        <AppStateProvider>
+          <SupabaseUserProvider>
         {children}
+        </SupabaseUserProvider>
+        </AppStateProvider>
         </ThemeProvider>
       </body>
     </html>

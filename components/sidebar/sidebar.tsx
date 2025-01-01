@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import WorkspaceDropdown from "./workspace-dropdown";
 
+import PlanUsage from "./plan-usage";
+
 
 interface SidebarProps{
     params:{WorkspaceId:string};
@@ -13,24 +15,29 @@ interface SidebarProps{
 
 
 const Sidebar:React.FC<SidebarProps>= async ({params,className})=> {
-    const supabase = createServerComponentClient({cookies})
+  const supabase = createServerComponentClient({ cookies });
 
-    const {
-        data:{user},
-    }  = await supabase.auth.getUser();
-    if(!user) return;
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
+  if (!user) return;
 
-    const {
-        data:subscriptionData , error:subsciptionError
-    } = await getUserSubscriptionStatus(user.id);
+  const { data: subscriptionData, error: subscriptionError } =
+    await getUserSubscriptionStatus(user.id);
 
-    const {
-        data:workspaceFolderData ,error:foldersError
-    } = await getFolders(params.WorkspaceId)
-
-    if(subsciptionError || foldersError) redirect('/dashboard')
-
+  //folders
+  const { data: workspaceFolderData, error: foldersError } = await getFolders(
+    params.WorkspaceId
+  );
+    
+    // if(subscriptionError || foldersError){
+    //   console.log('error ')
+    //   console.log(subscriptionError)
+    //   console.log(foldersError)
+    //   redirect('/hehe')
+    // }
+    
 
         const [privateWorkspaces, collaboratingWorkspaces, sharedWorkspaces] =
         await Promise.all([
@@ -51,8 +58,11 @@ const Sidebar:React.FC<SidebarProps>= async ({params,className})=> {
                   ...collaboratingWorkspaces,
                   ...sharedWorkspaces].find((workspace)=>workspace.id === params.WorkspaceId)
                 }>
-
-                </WorkspaceDropdown>
+              </WorkspaceDropdown>
+              <PlanUsage
+          foldersLength={workspaceFolderData?.length || 0}
+          subscription={subscriptionData}
+        />
               </div>
             </aside>
           );
