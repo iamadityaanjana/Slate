@@ -6,6 +6,9 @@ import { twMerge } from "tailwind-merge";
 import WorkspaceDropdown from "./workspace-dropdown";
 
 import PlanUsage from "./plan-usage";
+import NativeNavigation from "./native-navigation";
+import FoldersDropdownList from "./folder-dropdown-list";
+import { ScrollArea } from "../ui/scroll-area";
 
 
 interface SidebarProps{
@@ -63,6 +66,30 @@ const Sidebar:React.FC<SidebarProps>= async ({params,className})=> {
           foldersLength={workspaceFolderData?.length || 0}
           subscription={subscriptionData}
         />
+
+            <NativeNavigation myWorkspaceId={params.WorkspaceId} />
+
+            <ScrollArea
+          className="overflow-scroll relative
+          h-[450px]
+        "
+        >
+          <div
+            className="pointer-events-none 
+          w-full 
+          absolute 
+          bottom-0 
+          h-20 
+          bg-gradient-to-t 
+          from-background 
+          to-transparent 
+          z-40"
+          />
+          <FoldersDropdownList
+            workspaceFolders={workspaceFolderData || []}
+            workspaceId={params.WorkspaceId}
+          />
+        </ScrollArea>
               </div>
             </aside>
           );

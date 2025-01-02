@@ -1,20 +1,20 @@
 import React from 'react';
 import CustomDialogTrigger from '../global/custom-dialog-trigger';
-import SettingsForm from './settings-form';
+import TrashRestore from './trash-restore';
 
-interface SettingsProps {
+interface TrashProps {
   children: React.ReactNode;
 }
 
-const Settings: React.FC<SettingsProps> = ({ children }) => {
+const Trash: React.FC<TrashProps> = ({ children }) => {
   return (
     <CustomDialogTrigger
-      header="Settings"
-      content={<SettingsForm />}
+      header="Trash"
+      content={<TrashRestore />}
     >
       {children}
     </CustomDialogTrigger>
   );
 };
 
-export default Settings;
+export default Trash;

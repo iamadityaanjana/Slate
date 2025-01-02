@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import HomeIcon from '../icons/home-icon';
 import SettingsIcon from '../icons/settings-icon';
 import TrashIcon from '../icons/trash-icon';
-import Settings from '../settings/settings';
+import Settings from '../settings/setting';
 import Trash from '../trash/trash';
 
 interface NativeNavigationProps {

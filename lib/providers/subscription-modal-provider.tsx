@@ -9,9 +9,9 @@ import {
   useState,
 } from 'react';
 import { useSupabaseUser } from './supabase-user-provider';
-import { getUserSubscriptionStatus } from '../supabase/queries';
+import { getUserSubscriptionStatus } from '@/app/lib/supabase/queries';
 import SubscriptionModal from '@/components/global/subscription-modal';
-import { ProductWirhPrice } from '../supabase/supabase.types';
+import { ProductWirhPrice } from '@/app/lib/supabase/supabase.types';
 
 type SubscriptionModalContextType = {
   open: boolean;
