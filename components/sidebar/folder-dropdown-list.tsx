@@ -58,7 +58,7 @@ const FoldersDropdownList: React.FC<FoldersDropdownListProps> = ({
 
   //add folder
   const addFolderHandler = async () => {
-    if (folders.length >= 3 && !subscription) {
+    if (folders.length >= 5 && !subscription) {
       setOpen(true);
       return;
     }

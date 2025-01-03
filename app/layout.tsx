@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 
 import type { Metadata } from "next";
 import { DM_Sans} from "next/font/google";
@@ -7,7 +8,7 @@ import { ThemeProvider } from "../lib/providers/next-theme";
 import AppStateProvider from "@/lib/providers/state-provider";
 import { twMerge } from "tailwind-merge";
 import { SupabaseUserProvider } from "@/lib/providers/supabase-user-provider";
-
+import { SocketProvider } from '@/lib/providers/socket-provider';
 
 const inter = DM_Sans({ subsets: ['latin'] });
 
@@ -37,7 +38,9 @@ export default function RootLayout({
         >
         <AppStateProvider>
           <SupabaseUserProvider>
+            <SocketProvider>
         {children}
+        </SocketProvider>
         </SupabaseUserProvider>
         </AppStateProvider>
         </ThemeProvider>
