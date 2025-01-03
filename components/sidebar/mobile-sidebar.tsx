@@ -1,7 +1,7 @@
 'use client';
 import { Menu } from 'lucide-react';
 import React, { useState } from 'react';
-import PageIcon from '/Logo.svg';
+import PageIcon from '@/public/Logo.svg'
 import clsx from 'clsx';
 
 interface MobileSidebarProps {
@@ -55,7 +55,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({ children }) => {
                 setSelectedNav(item.id);
               }}
             >
-              <item.customIcon></item.customIcon>
+              <item.customIcon />
               <small
                 className={clsx('', {
                   'text-muted-foreground': selectedNav !== item.id,

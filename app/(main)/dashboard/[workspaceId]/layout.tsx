@@ -1,5 +1,5 @@
 import Sidebar from "@/components/sidebar/sidebar";
-
+import MobileSidebar from '@/components/sidebar/mobile-sidebar';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -10,20 +10,30 @@ interface LayoutProps {
 
     
     return (
-      <main className="flex
-      overflow-hidden
+      <main
+      className="flex overflow-hidden
       h-screen
-      w-screen">
-        <Sidebar params={params}/>
-        
-        <div className="dark:border-Neutrals-12/70
+      w-screen
+  "
+    >
+      <Sidebar params={params} />
+      {/* <MobileSidebar>
+        <Sidebar
+          params={params}
+          className="w-screen inline-block sm:hidden"
+        />
+      </MobileSidebar> */}
+      <div
+        className="dark:boder-Neutrals-12/70
         border-l-[1px]
         w-full
         relative
-        overflow-scroll">
-            {children}
-        </div>
-      </main>
+        overflow-scroll
+      "
+      >
+        {children}
+      </div>
+    </main>
     );
   };
   
