@@ -7,8 +7,8 @@ import { PRICING_CARDS, PRICING_PLANS } from "@/lib/constants"
 import clsx from "clsx"
 import { Button } from "@/components/ui/button"
 import { CardContent, CardTitle } from "@/components/ui/card"
-import Diamond from '@/public/icons/diamond.svg';
-import Check from '@/public/icons/Check.svg'
+import Diamond from '@/public/Diamond.svg';
+import Check from '@/public/Check.svg'
 
 const Homepage=()=>{
     return(
