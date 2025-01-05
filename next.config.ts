@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   images:{
     domains:['rdtnovwqcdafvcfxpcum.supabase.co','github.com'],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;

@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import React from 'react';
 import QuillEditor from '@/components/quill-editor/quill-editor';
-import { getFileDetails } from '@//app/lib/supabase/queries';
+import { getFileDetails } from '@/app/lib/supabase/queries';
 import { redirect } from 'next/navigation';
 
 const File = async ({ params }: { params: { fileId: string } }) => {
